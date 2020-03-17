@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="general.html :: head"></div>
+<body>
+<div th:replace="general.html :: navigation"></div>
+<div class="container">
+
+    <h1>Task in detail</h1>
+
+    <div th:if="${task == null}">
+        <p>Task not found!</p>
+    </div>
+
+    <div th:if="${task != null}">
+        <p th:text="${task.taskId}"></p>
+        <p th:text="${task.title}"></p>
+        <p th:text="${task.description}"></p>
+        <p th:text="${task.dateAndTimeOfTask}"></p>
+    </div>
+
+    <div th:if="${subtaskList == null}">
+        <p>No subtasks for this task</p>
+    </div>
+
+    <div th:if="${subtaskList != null}">
+        <h2>Subtasks</h2>
+        <table class="table table-striped" >
+            <thead>
+            <tr>
+                <th scope="col">Task title</th>
+                <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="subtask : ${subtaskList}">
+                <td th:text="${subtask.title}"></td>
+                <td th:text="${subtask.description}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p><a class="btn btn-secondary text-left" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
+
+    <div th:if="${task != null}">
+        <p><a class="btn btn-outline-secondary marginbuttons text-left" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}"><i class="far fa-edit"></i> Edit this Task!</a></p>
+        <p><a class="btn btn-outline-secondary marginbuttons text-left" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}"><i class="fas fa-plus-circle"></i> Create subtask for this Task!</a></p>
+    </div>
+
+</div>
+<div th:replace="general.html :: footer"></div>
+<div th:replace="general.html :: bootstraplinks"></div>
+</body>
+</html>
