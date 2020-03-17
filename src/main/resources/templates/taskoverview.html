@@ -15,7 +15,6 @@
         <table class="table table-striped" >
             <thead>
                 <tr>
-                    <th scope="col">Task Id</th>
                     <th scope="col">Task title</th>
                     <th scope="col">Task Date & Time</th>
                     <th scope="col">Details</th>
@@ -25,9 +24,8 @@
             </thead>
             <tbody>
                 <tr th:each="task : ${tasks}">
-                    <td th:text="${task.taskId}"></td>
                     <td th:text="${task.title}"></td>
-                    <td th:text="${task.dateAndTimeOfTask}"></td>
+                    <td th:text="${#temporals.format(task.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></td>
                     <td><a class="linkclass" th:href="@{/tasks/{taskId}(taskId=${task.taskId})}"><i class="fas fa-list-ul"></i></a></td>
                     <td><a class="linkclass" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}"><i class="far fa-edit"></i></a></td>
                     <td><a class="linkclass" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}"><i class="fas fa-plus-circle"></i></a></td>
@@ -36,7 +34,7 @@
         </table>
     </div>
 
-    <p><a class="btn btn-secondary" href="#" th:href="@{/tasks/new}">Add a new Task here!</a></p>
+    <p><a class="btn btn-secondary" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
 
     </div>
     <div th:replace="general.html :: footer"></div>

@@ -9,36 +9,37 @@
 
     <div th:if="${task == null}">
         <p>Task not found!</p>
+        <p><a class="btn btn-secondary" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
     </div>
 
     <div th:if="${task != null}">
-        <p th:text="${task.taskId}"></p>
         <p th:text="${task.title}"></p>
         <p th:text="${task.description}"></p>
-        <p th:text="${task.dateAndTimeOfTask}"></p>
+        <p th:text="${#temporals.format(task.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></p>
+
+        <div th:if="${subtaskList == null}">
+            <p>No subtasks for this task</p>
+        </div>
+
+        <div th:if="${subtaskList != null}">
+            <h2>Subtasks</h2>
+            <table class="table table-striped" >
+                <thead>
+                <tr>
+                    <th scope="col">Task title</th>
+                    <th scope="col">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="subtask : ${subtaskList}">
+                    <td th:text="${subtask.title}"></td>
+                    <td th:text="${subtask.description}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div th:if="${subtaskList == null}">
-        <p>No subtasks for this task</p>
-    </div>
-
-    <div th:if="${subtaskList != null}">
-        <h2>Subtasks</h2>
-        <table class="table table-striped" >
-            <thead>
-            <tr>
-                <th scope="col">Task title</th>
-                <th scope="col">Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="subtask : ${subtaskList}">
-                <td th:text="${subtask.title}"></td>
-                <td th:text="${subtask.description}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 
     <p><a class="btn btn-secondary text-left" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
 
