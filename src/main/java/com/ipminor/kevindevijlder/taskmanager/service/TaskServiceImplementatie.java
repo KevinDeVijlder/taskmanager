@@ -62,8 +62,10 @@ public class TaskServiceImplementatie implements TaskService{
     @Override
     public void addSubTask(SubTaskDTO subTaskDTO, long taskId) {
         Task task = taskRepository.findById(taskId).orElse(null);
-        task.AddSubTask(subTaskDTO);
-        taskRepository.save(task);
+        if(task != null) {
+            task.AddSubTask(subTaskDTO);
+            taskRepository.save(task);
+        }
     }
 
     @Override
