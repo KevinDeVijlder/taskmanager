@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="general.html :: head"></div>
 <body>
 <div th:replace="general.html :: navigation"></div>
@@ -13,9 +13,11 @@
     </div>
 
     <div th:if="${task != null}">
-        <p th:text="${task.title}"></p>
-        <p th:text="${task.description}"></p>
-        <p th:text="${#temporals.format(task.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></p>
+        <div class="postitlayout">
+            <p class="titletaskbold" th:text="${task.title}"></p>
+            <p th:text="${task.description}"></p>
+            <p th:text="${#temporals.format(task.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></p>
+        </div>
 
         <div th:if="${subtaskList == null}">
             <p>No subtasks for this task</p>

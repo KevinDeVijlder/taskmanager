@@ -15,9 +15,11 @@
         <div th:if="${masterTask != null}">
 
             <h2>Creating subtask for following task: </h2>
-            <p th:text="${masterTask.title}"></p>
-            <p th:text="${masterTask.description}"></p>
-            <p th:text="${#temporals.format(masterTask.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></p>
+            <div class="postitlayout">
+                <p class="titletaskbold" th:text="${masterTask.title}"></p>
+                <p th:text="${masterTask.description}"></p>
+                <p th:text="${#temporals.format(masterTask.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></p>
+            </div>
 
             <h2>Subtask form</h2>
             <form method="post" action="/tasks/sub/createTask" th:object="${subTaskDTO}">

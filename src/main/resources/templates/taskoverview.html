@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="general.html :: head"></div>
 <body>
     <div th:replace="general.html :: navigation"></div>
@@ -7,11 +7,11 @@
 
     <h1>Tasks</h1>
 
-    <div th:if="${tasks.empty}">
+    <div th:if="${tasks.isEmpty() == true}">
         <p>No tasks left to do</p>
     </div>
 
-    <div th:if="${!tasks.empty}">
+    <div th:if="${!tasks.isEmpty()}">
         <table class="table table-striped" >
             <thead>
                 <tr>

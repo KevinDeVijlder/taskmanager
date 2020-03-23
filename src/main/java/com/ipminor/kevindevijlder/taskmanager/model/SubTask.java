@@ -16,12 +16,12 @@ public class SubTask {
     @GeneratedValue
     private long subtaskId;
 
-    @NotEmpty(message = "Title mag niet leeg zijn")
-    @Size(min = 5, max = 25, message = "Title moet tussen 5 en 25 tekens zijn!")
+    @NotEmpty(message = "Title can't be empty!")
+    @Size(min = 5, max = 25, message = "Title has to be between 5 and 25 characters!")
     private String title;
 
-    @NotEmpty(message = "Description mag niet leeg zijn")
-    @Size(min = 10, max = 50, message = "Description moet tussen 10 en 50 tekens zijn!")
+    @NotEmpty(message = "Description can't be empty!")
+    @Size(min = 10, max = 150, message = "Description has to be between 10 and 150 characters!")
     private String description;
 
     @ManyToOne
