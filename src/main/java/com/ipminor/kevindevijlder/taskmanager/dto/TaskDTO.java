@@ -1,15 +1,13 @@
 package com.ipminor.kevindevijlder.taskmanager.dto;
 
 import com.ipminor.kevindevijlder.taskmanager.model.SubTask;
+import org.hibernate.validator.constraints.LuhnCheck;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +16,17 @@ public class TaskDTO {
     private long taskId;
 
     @NotEmpty(message = "Title can't be empty!")
-    @Size(min = 5, max = 25, message = "Title has to be between 5 and 25 characters!")
+    @Size.List({
+            @Size(min = 5, message = "Title has to be at least 5 characters long"),
+            @Size(max = 25, message = "Title can't be longer than 25 characters")
+    })
     private String title;
 
     @NotEmpty(message = "Description can't be empty!")
-    @Size(min = 10, max = 150, message = "Description has to be between 10 and 150 characters!")
+    @Size.List({
+            @Size(min = 10, message = "Description has to be at least 10 characters long"),
+            @Size(max = 150, message = "Description can't be longer than 150 characters")
+    })
     private String description;
 
     @NotNull(message = "Date can't be empty!")

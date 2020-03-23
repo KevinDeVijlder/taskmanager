@@ -3,9 +3,11 @@
 <div th:replace="general.html :: head"></div>
 <body>
 <div th:replace="general.html :: navigation"></div>
+
+<div class="personalcontainer">
 <div class="container">
 
-    <h1>Edit Task Form</h1>
+    <h2>Edit Task Form</h2>
 
     <div th:if="${taskDTO == null}">
         <p>Task does not exist! You can't edit a task that doesnt exist! </p>
@@ -15,50 +17,55 @@
 
     <div th:if="${taskDTO != null}">
         <form method="post" action="/tasks/edit" th:object="${taskDTO}">
-            <h4>Edit Task</h4>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="taskId">task ID: </label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="number" th:field="*{taskId}" readonly>
-                </div>
-                <div class="col danger">
-                    <p th:errors="*{taskId}"></p>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="title">Title: </label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="text" th:field="*{title}">
-                </div>
-                <div class="col danger">
-                    <p th:errors="*{title}"></p>
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                    <label for="taskId" class="formtitle">Task ID</label>
+                    <input class="form-control" id="taskId" type="text" th:field="*{taskId}" readonly>
+                    <div class="danger">
+                        <p th:errors="*{taskId}"></p>
+                    </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="description">Description: </label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="text" th:field="*{description}">
-                </div>
-                <div class="col danger">
-                    <p class="col danger" th:errors="*{description}"></p>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="dateAndTimeOfTask">Date and time of task: </label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="datetime-local" th:field="*{dateAndTimeOfTask}">
-                </div>
-                <div class="col danger">
-                    <p th:errors="*{dateAndTimeOfTask}"></p>
+
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                    <label for="title" class="formtitle">Title</label>
+                    <input class="form-control" id="title" type="text" th:field="*{title}">
+                    <div class="danger">
+                        <p th:errors="*{title}"></p>
+                    </div>
                 </div>
             </div>
-            <input class="btn btn-secondary btn-lg btn-block text-left" type="submit" value="Edit Task">
+
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                    <label for="description" class="formtitle">Description</label>
+                    <textarea class="form-control" id="description" rows="5" th:field="*{description}"></textarea>
+                    <div class="danger">
+                        <p th:errors="*{description}"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-xs-5 col-lg-4">
+                    <label for="dateAndTimeOfTask" class="formtitle">Date and time of task</label>
+                    <input class="form-control" id="dateAndTimeOfTask" type="datetime-local" th:field="*{dateAndTimeOfTask}">
+                    <div class="danger">
+                        <p th:errors="*{dateAndTimeOfTask}"></p>
+                    </div>
+                </div>
+            </div>
+
+            <input class="btn btn-secondary text-left btn-submit-custom" type="submit" value="Edit Task">
         </form>
 
-        <p><a class="btn btn-outline-secondary btn-lg marginbuttons btn-block text-left" th:href="@{/tasks/{taskId}(taskId=${taskDTO.taskId})}"><i class="fas fa-list-ul"></i> Master Task Details</a></p>
+        <p><a class="btn btn-secondary text-left btn-submit-custom2" th:href="@{/tasks/{taskId}(taskId=${taskDTO.taskId})}"><i class="fas fa-list-ul"></i> Details master task</a></p>
     </div>
 
 </div>
+</div>
+
 <div th:replace="general.html :: footer"></div>
 <div th:replace="general.html :: bootstraplinks"></div>
 </body>

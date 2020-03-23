@@ -3,6 +3,7 @@
 <div th:replace="general.html :: head"></div>
 <body>
     <div th:replace="general.html :: navigation"></div>
+    <div class="personalcontainer">
     <div class="container">
 
     <h1>Tasks</h1>
@@ -36,6 +37,7 @@
 
     <p><a class="btn btn-secondary" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
 
+    </div>
     </div>
     <div th:replace="general.html :: footer"></div>
     <div th:replace="general.html :: bootstraplinks"></div>
