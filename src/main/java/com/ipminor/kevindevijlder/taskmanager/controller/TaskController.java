@@ -4,6 +4,7 @@ import com.ipminor.kevindevijlder.taskmanager.dto.SubTaskDTO;
 import com.ipminor.kevindevijlder.taskmanager.dto.TaskDTO;
 import com.ipminor.kevindevijlder.taskmanager.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -102,5 +103,38 @@ public class TaskController {
         taskService.editTask(taskDTO);
         return "redirect:/tasks/" + taskId;
     }
+
+    //Alles over delete task
+
+    @GetMapping("/tasks/delete/{taskId}")
+    public String getDeleteTaskPage(@PathVariable int taskId, Model model){
+        model.addAttribute("taskToDelete", taskService.getTask(taskId));
+        return "deletetaskpage";
+    }
+
+    @PostMapping("/tasks/delete")
+    public String postDeleteTask(@RequestParam(value = "confirmation") String confirmation, @RequestParam(value = "taskId") Integer taskId){
+        if(confirmation.equals("yes")){
+            taskService.removeTask(taskId);
+        }
+        return "redirect:/tasks";
+    }
+
+    //alles over deleteall
+
+    @GetMapping("/tasks/deleteall")
+    public String getDeleteAllTaskPage(Model model){
+        model.addAttribute("amounttasktodelete", taskService.getTasks().size());
+        return "deletealltaskpage";
+    }
+
+    @PostMapping("/tasks/deleteallconfirmed")
+    public String postDeleteAllTask(@RequestParam(value = "confirmation") String confirmation){
+        if(confirmation.equals("yes")){
+            taskService.removeAllTasks();
+        }
+        return "redirect:/tasks";
+    }
+
 
 }

@@ -47,6 +47,16 @@ public class TaskServiceImplementatie implements TaskService{
         taskRepository.save(task);
     }
 
+    @Override
+    public void removeTask(long taskId) {
+        taskRepository.deleteById(taskId);
+    }
+
+    @Override
+    public void removeAllTasks() {
+        taskRepository.deleteAll();
+    }
+
     //subtask stuff
 
     @Override

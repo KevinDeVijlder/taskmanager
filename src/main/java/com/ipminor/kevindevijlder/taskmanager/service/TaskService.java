@@ -17,6 +17,10 @@ public interface TaskService {
 
     public void editTask(TaskDTO taskDTO);
 
+    public void removeTask(long taskId);
+
+    public void removeAllTasks();
+
     //subtask alles
 
     public List<SubTask> getSubTasks(long taskId);
