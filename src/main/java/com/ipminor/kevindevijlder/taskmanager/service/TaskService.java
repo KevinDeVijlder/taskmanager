@@ -27,6 +27,5 @@ public interface TaskService {
 
     public void addSubTask(SubTaskDTO subTaskDTO, long taskId);
 
-    public SubTask getSubTask(long subtaskId);
 
 }

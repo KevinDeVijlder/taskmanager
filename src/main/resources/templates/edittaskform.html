@@ -11,8 +11,8 @@
 
     <div th:if="${taskDTO == null}">
         <p>Task does not exist! You can't edit a task that doesnt exist! </p>
-        <p><a class="btn btn-secondary" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
-        <p><a class="btn btn-secondary text-left" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
+        <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
+        <p><a class="btn btn-secondary text-left btn-submit-custom2" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
     </div>
 
     <div th:if="${taskDTO != null}">

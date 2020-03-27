@@ -4,6 +4,7 @@ import com.ipminor.kevindevijlder.taskmanager.model.SubTask;
 import org.hibernate.validator.constraints.LuhnCheck;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;

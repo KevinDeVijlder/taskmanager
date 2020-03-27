@@ -28,7 +28,7 @@ public class TaskServiceImplementatie implements TaskService{
     @Override
     public void addTask(TaskDTO taskDTO) {
         Task task = new Task(taskDTO.getTaskId(), taskDTO.getTitle(), taskDTO.getDescription(), taskDTO.getDateAndTimeOfTask(), taskDTO.getSubTasks());
-        taskRepository.save(task);
+        taskRepository.saveAndFlush(task);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class TaskServiceImplementatie implements TaskService{
         task.setDescription(taskDTO.getDescription());
         task.setDateAndTimeOfTask(taskDTO.getDateAndTimeOfTask());
 
-        taskRepository.save(task);
+        taskRepository.saveAndFlush(task);
     }
 
     @Override
@@ -74,13 +74,8 @@ public class TaskServiceImplementatie implements TaskService{
         Task task = taskRepository.findById(taskId).orElse(null);
         if(task != null) {
             task.AddSubTask(subTaskDTO);
-            taskRepository.save(task);
+            taskRepository.saveAndFlush(task);
         }
-    }
-
-    @Override
-    public SubTask getSubTask(long subtaskId) {
-        return null;
     }
 
 

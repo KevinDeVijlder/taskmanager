@@ -10,7 +10,7 @@
 
     <div th:if="${task == null}">
         <p>Task not found!</p>
-        <p><a class="btn btn-secondary" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
+        <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
     </div>
 
     <div th:if="${task != null}">
@@ -44,11 +44,11 @@
     </div>
 
 
-    <p><a class="btn btn-secondary text-left" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
+    <p><a class="btn btn-secondary text-left btn-submit-custom" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
 
     <div th:if="${task != null}">
-        <p><a class="btn btn-outline-secondary marginbuttons text-left" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}"><i class="far fa-edit"></i> Edit this Task!</a></p>
-        <p><a class="btn btn-outline-secondary marginbuttons text-left" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}"><i class="fas fa-plus-circle"></i> Create subtask for this Task!</a></p>
+        <p><a class="btn btn-outline-secondary marginbuttons text-left btn-submit-custom2" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}"><i class="far fa-edit"></i> Edit this Task!</a></p>
+        <p><a class="btn btn-outline-secondary marginbuttons text-left btn-submit-custom2" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}"><i class="fas fa-plus-circle"></i> Create subtask for this Task!</a></p>
     </div>
 
 </div>
