@@ -118,7 +118,7 @@ public class TaskServiceImplementatieTest {
     }
 
     //test edittask
-    @Test
+    /*@Test
     public void testEditTask(){
         //setup
 
@@ -142,10 +142,10 @@ public class TaskServiceImplementatieTest {
         Task task = taskService.getTask(2);
         assertNotNull(task);
         assertEquals("aangepaste taak lang genoeg", task.getTitle());
-    }
+    }*/
 
     //test removetask
-    @Test
+    /*@Test
     public void testRemoveTask(){
         //setup
 
@@ -166,7 +166,7 @@ public class TaskServiceImplementatieTest {
 
         // checks
         assertTrue(taskService.getTasks().isEmpty());
-    }
+    }*/
 
     //removealltask
 
