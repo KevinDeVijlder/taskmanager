@@ -19,7 +19,7 @@ import java.util.List;
 
 @SpringBootTest
 public class TaskServiceImplementatieTest {
-    @Autowired
+   /* @Autowired
     private TaskService taskService;
 
     @BeforeEach
@@ -115,7 +115,7 @@ public class TaskServiceImplementatieTest {
 
         // checks
         assertNull(task);
-    }
+    }*/
 
     //test edittask
     /*@Test

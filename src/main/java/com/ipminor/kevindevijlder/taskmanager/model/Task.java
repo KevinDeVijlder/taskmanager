@@ -39,23 +39,6 @@ public class Task {
 
     }
 
-    public Task(long taskId, String title, String description, LocalDateTime dateAndTimeOfTask) {
-        this.setTaskId(taskId);
-        this.setTitle(title);
-        this.setDescription(description);
-        this.setDateAndTimeOfTask(dateAndTimeOfTask);
-        subTasks = new ArrayList<>();
-    }
-
-    public Task(long taskId, String title, String description, LocalDateTime dateAndTimeOfTask, List<SubTask> subTasks){
-        this.setTaskId(taskId);
-        this.setTitle(title);
-        this.setDescription(description);
-        this.setDateAndTimeOfTask(dateAndTimeOfTask);
-        this.setSubTasks(subTasks);
-    }
-
-
     public String getTitle() {
         return title;
     }

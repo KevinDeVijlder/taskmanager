@@ -3,10 +3,7 @@ package com.ipminor.kevindevijlder.taskmanager.dto;
 import com.ipminor.kevindevijlder.taskmanager.model.SubTask;
 import org.hibernate.validator.constraints.LuhnCheck;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
@@ -82,7 +79,7 @@ public class TaskDTO {
         return this.subTasks;
     }
 
-    public void setSubTasks(ArrayList<SubTask> subTasks){
+    public void setSubTasks(List<SubTask> subTasks){
         this.subTasks = subTasks;
     }
 }

@@ -9,13 +9,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface TaskService {
-    public List<Task> getTasks();
+    public List<TaskDTO> getTasks();
 
-    public void addTask(TaskDTO taskDTO);
+    public TaskDTO addTask(TaskDTO taskDTO);
 
-    public Task getTask(long taskId);
+    public TaskDTO getTask(long taskId);
 
-    public void editTask(TaskDTO taskDTO);
+    public TaskDTO editTask(TaskDTO taskDTO);
 
     public void removeTask(long taskId);
 
