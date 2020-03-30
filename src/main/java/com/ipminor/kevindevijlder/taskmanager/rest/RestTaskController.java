@@ -41,8 +41,8 @@ public class RestTaskController {
     }
 
     @DeleteMapping("/tasks/{taskId}")
-    public TaskDTO deleteTask(@PathVariable Long taskId){
-        return taskService.editTask(taskService.getTask(taskId));
+    public void deleteTask(@PathVariable Long taskId){
+        taskService.removeTask(taskId);
     }
 
 }
