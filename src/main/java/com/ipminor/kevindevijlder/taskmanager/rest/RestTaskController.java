@@ -23,6 +23,13 @@ public class RestTaskController {
         return taskService.getTasks();
     }
 
+    @GetMapping("/tasks/{taskId}")
+    @ResponseBody
+    public TaskDTO getTask(@PathVariable Long taskId) {
+        return taskService.getTask(taskId);
+    }
+
+
     @PostMapping("/tasks")
     public TaskDTO createNewHead(@RequestBody @Valid TaskDTO taskDTO){
         return taskService.addTask(taskDTO);
@@ -31,6 +38,11 @@ public class RestTaskController {
     @PutMapping("/tasks")
     public TaskDTO editTask(@RequestBody @Valid TaskDTO taskDTO){
         return taskService.editTask(taskDTO);
+    }
+
+    @DeleteMapping("/tasks/{taskId}")
+    public TaskDTO deleteTask(@PathVariable Long taskId){
+        return taskService.editTask(taskService.getTask(taskId));
     }
 
 }
