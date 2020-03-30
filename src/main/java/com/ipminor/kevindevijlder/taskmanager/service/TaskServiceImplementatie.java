@@ -4,6 +4,7 @@ import com.ipminor.kevindevijlder.taskmanager.dto.SubTaskDTO;
 import com.ipminor.kevindevijlder.taskmanager.dto.TaskDTO;
 import com.ipminor.kevindevijlder.taskmanager.model.SubTask;
 import com.ipminor.kevindevijlder.taskmanager.model.Task;
+import com.ipminor.kevindevijlder.taskmanager.repository.SubTaskRepository;
 import com.ipminor.kevindevijlder.taskmanager.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,12 @@ import java.util.stream.Collectors;
 @Service
 public class TaskServiceImplementatie implements TaskService{
     private final TaskRepository taskRepository;
+    private final SubTaskRepository subTaskRepository;
 
     @Autowired
-    public TaskServiceImplementatie(TaskRepository taskRepository) {
+    public TaskServiceImplementatie(TaskRepository taskRepository, SubTaskRepository subTaskRepository) {
         this.taskRepository = taskRepository;
+        this.subTaskRepository = subTaskRepository;
     }
 
     @Override
@@ -45,13 +48,11 @@ public class TaskServiceImplementatie implements TaskService{
 
     @Override
     public TaskDTO editTask(TaskDTO taskDTO) {
-        Task task = new Task();
+        Task task = taskRepository.findById(taskDTO.getTaskId()).orElse(null);
 
-        task.setTaskId(taskDTO.getTaskId());
         task.setTitle(taskDTO.getTitle());
         task.setDescription(taskDTO.getDescription());
         task.setDateAndTimeOfTask(taskDTO.getDateAndTimeOfTask());
-        task.setSubTasks(taskDTO.getSubTasks());
 
         task = taskRepository.save(task);
         return convert(task);
