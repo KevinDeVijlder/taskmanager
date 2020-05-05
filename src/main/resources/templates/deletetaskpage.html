@@ -7,25 +7,25 @@
 <div class="personalcontainer">
     <div class="container">
 
-        <h2>Delete task</h2>
+        <h2 th:text="#{deletetaskpage.h2title}"></h2>
 
         <div th:if="${taskToDelete == null}">
-            <p>Task does not exist! Cant delete task that doesnt exist!</p>
-            <p><a class="btn btn-secondary" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
-            <p><a class="btn btn-secondary text-left" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
+            <p th:text="#{deletetaskpage.taskdoesntexist}"></p>
+            <p><a class="btn btn-secondary" href="#" th:href="@{/tasks/new}" th:text="#{deletetaskpage.addnewtask}"></a></p>
+            <p><a class="btn btn-secondary text-left" href="#" th:href="@{/tasks}" th:text="#{deletetaskpage.taskoverview}"></a></p>
         </div>
 
         <div th:if="${taskToDelete != null}">
-            <p>U sure u want to delete the following task? </p>
-            <p th:text="${taskToDelete.taskId} + ' with title ' + ${taskToDelete.title}"></p>
+            <p th:text="#{deletetaskpage.confirmation}"></p>
+            <p th:text="${taskToDelete.taskId} + ' ' + #{deletetaskpage.whattodelete} + ' ' + ${taskToDelete.title}"></p>
 
             <form method="post" action="/tasks/delete">
                 <div class="row">
                     <div class="form-group col-xs-5 col-lg-4">
                         <input type="radio" id="yes" name="confirmation" value="yes" checked>
-                        <label for="yes">Yes</label><br>
+                        <label for="yes" th:text="#{deletetaskpage.yes}"></label><br>
                         <input type="radio" id="no" name="confirmation" value="no">
-                        <label for="no">No</label><br>
+                        <label for="no" th:text="#{deletetaskpage.no}"></label><br>
                     </div>
                 </div>
 

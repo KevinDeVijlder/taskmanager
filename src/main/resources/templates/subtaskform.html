@@ -5,28 +5,29 @@
 <div th:replace="general.html :: navigation"></div>
     <div class="personalcontainer">
     <div class="container">
-        <h1>New Sub Task Form</h1>
+
+        <h1 th:text="#{subtaskform.h1title}"></h1>
 
         <div th:if="${masterTask == null}">
-            <p>Task does not exist! Cant create subtask for task that doesnt exist!</p>
-            <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
-            <p><a class="btn btn-secondary btn-submit-custom2 text-left" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
+            <p th:text="#{subtaskform.doesntexist}"></p>
+            <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}" th:text="#{subtaskform.addnew}"></a></p>
+            <p><a class="btn btn-secondary btn-submit-custom2 text-left" href="#" th:href="@{/tasks}" th:text="#{subtaskform.return}"></a></p>
         </div>
 
         <div th:if="${masterTask != null}">
 
-            <h2>Creating subtask for following task: </h2>
+            <h2 th:text="#{subtaskform.h2title}"></h2>
             <div class="postitlayout">
                 <p class="titletaskbold" th:text="${masterTask.title}"></p>
                 <p th:text="${masterTask.description}"></p>
                 <p th:text="${#temporals.format(masterTask.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></p>
             </div>
 
-            <h2>Subtask form</h2>
+            <h2 th:text="#{subtaskform.form.h2title}"></h2>
             <form method="post" action="/tasks/sub/createTask" th:object="${subTaskDTO}">
                 <div class="row">
                     <div class="form-group col-xs-5 col-lg-4">
-                        <label for="title" class="formtitle">Title</label>
+                        <label for="title" class="formtitle" th:text="#{subtaskform.form.title}"></label>
                         <input class="form-control" id="title" type="text" th:field="*{title}">
                         <div class="danger">
                             <p th:errors="*{title}"></p>
@@ -36,7 +37,7 @@
 
                 <div class="row">
                     <div class="form-group col-xs-5 col-lg-4">
-                        <label for="description" class="formtitle">Description</label>
+                        <label for="description" class="formtitle" th:text="#{subtaskform.form.description}"></label>
                         <textarea class="form-control" id="description" rows="5" th:field="*{description}"></textarea>
                         <div class="danger">
                             <p th:errors="*{description}"></p>
@@ -48,7 +49,7 @@
                 <input class="btn btn-secondary text-left btn-submit-custom" type="submit" value="Add Subtask">
             </form>
 
-            <p><a class="btn btn-secondary text-left btn-submit-custom2" href="#" th:href="@{/tasks/{taskId}(taskId=${masterTask.taskId})}"><i class="fas fa-list-ul"></i> Details master task</a></p>
+            <p><a class="btn btn-secondary text-left btn-submit-custom2" href="#" th:href="@{/tasks/{taskId}(taskId=${masterTask.taskId})}" th:text="#{subtaskform.master}"></a></p>
 
         </div>
     </div>

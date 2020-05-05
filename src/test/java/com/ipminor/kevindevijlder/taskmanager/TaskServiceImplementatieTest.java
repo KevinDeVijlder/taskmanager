@@ -22,11 +22,6 @@ public class TaskServiceImplementatieTest {
    /* @Autowired
     private TaskService taskService;
 
-    @BeforeEach
-    public void setup(){
-        taskService.removeAllTasks();
-    }
-
 
     //tests gettask
     @Test
@@ -42,7 +37,7 @@ public class TaskServiceImplementatieTest {
         taskService.addTask(taskDTO);
 
         //methode dat we testen:
-        List<Task> listTasks = taskService.getTasks();
+        List<TaskDTO> listTasks = taskService.getTasks();
 
         // checks
         assertNotNull(listTasks);
@@ -115,10 +110,10 @@ public class TaskServiceImplementatieTest {
 
         // checks
         assertNull(task);
-    }*/
+    }
 
     //test edittask
-    /*@Test
+    @Test
     public void testEditTask(){
         //setup
 
@@ -142,10 +137,10 @@ public class TaskServiceImplementatieTest {
         Task task = taskService.getTask(2);
         assertNotNull(task);
         assertEquals("aangepaste taak lang genoeg", task.getTitle());
-    }*/
+    }
 
     //test removetask
-    /*@Test
+    @Test
     public void testRemoveTask(){
         //setup
 
@@ -166,13 +161,13 @@ public class TaskServiceImplementatieTest {
 
         // checks
         assertTrue(taskService.getTasks().isEmpty());
-    }*/
+    }
 
     //removealltask
 
     //test getsubtasks
 
     //test addsubtask
-
+*/
     //test getsubtask
 }

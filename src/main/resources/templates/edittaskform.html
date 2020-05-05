@@ -7,19 +7,19 @@
 <div class="personalcontainer">
 <div class="container">
 
-    <h2>Edit Task Form</h2>
+    <h2 th:text="#{edittaskform.h2}"></h2>
 
     <div th:if="${taskDTO == null}">
-        <p>Task does not exist! You can't edit a task that doesnt exist! </p>
-        <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
-        <p><a class="btn btn-secondary text-left btn-submit-custom2" href="#" th:href="@{/tasks}"><i class="fas fa-list-ul"></i> Return to Task overview here!</a></p>
+        <p th:text="#{edittaskform.taskdoesntexist}"></p>
+        <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}" th:text="#{edittaskform.addnewtask}"></a></p>
+        <p><a class="btn btn-secondary text-left btn-submit-custom2" href="#" th:href="@{/tasks}" th:text="#{edittaskform.returntaskoverview}"></a></p>
     </div>
 
     <div th:if="${taskDTO != null}">
         <form method="post" action="/tasks/edit" th:object="${taskDTO}">
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                    <label for="taskId" class="formtitle">Task ID</label>
+                    <label for="taskId" class="formtitle" th:text="#{edittaskform.form.id}"></label>
                     <input class="form-control" id="taskId" type="text" th:field="*{taskId}" readonly>
                     <div class="danger">
                         <p th:errors="*{taskId}"></p>
@@ -29,7 +29,7 @@
 
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                    <label for="title" class="formtitle">Title</label>
+                    <label for="title" class="formtitle" th:text="#{edittaskform.form.title}"></label>
                     <input class="form-control" id="title" type="text" th:field="*{title}">
                     <div class="danger">
                         <p th:errors="*{title}"></p>
@@ -39,7 +39,7 @@
 
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                    <label for="description" class="formtitle">Description</label>
+                    <label for="description" class="formtitle" th:text="#{edittaskform.form.description}"></label>
                     <textarea class="form-control" id="description" rows="5" th:field="*{description}"></textarea>
                     <div class="danger">
                         <p th:errors="*{description}"></p>
@@ -49,7 +49,7 @@
 
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
-                    <label for="dateAndTimeOfTask" class="formtitle">Date and time of task</label>
+                    <label for="dateAndTimeOfTask" class="formtitle" th:text="#{edittaskform.form.date}"></label>
                     <input class="form-control" id="dateAndTimeOfTask" type="datetime-local" th:field="*{dateAndTimeOfTask}">
                     <div class="danger">
                         <p th:errors="*{dateAndTimeOfTask}"></p>
@@ -60,7 +60,7 @@
             <input class="btn btn-secondary text-left btn-submit-custom" type="submit" value="Edit Task">
         </form>
 
-        <p><a class="btn btn-secondary text-left btn-submit-custom2" th:href="@{/tasks/{taskId}(taskId=${taskDTO.taskId})}"><i class="fas fa-list-ul"></i> Details master task</a></p>
+        <p><a class="btn btn-secondary text-left btn-submit-custom2" th:href="@{/tasks/{taskId}(taskId=${taskDTO.taskId})}" th:text="#{edittaskform.details}"></a></p>
     </div>
 
 </div>

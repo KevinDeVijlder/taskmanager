@@ -6,22 +6,22 @@
     <div class="personalcontainer">
     <div class="container">
 
-    <h1>Tasks</h1>
+    <h1 th:text="#{taskoverview.h1}"></h1>
 
     <div th:if="${tasks.isEmpty() == true}">
-        <p>No tasks left to do</p>
+        <p th:text="#{taskoverview.notasks}"></p>
     </div>
 
     <div th:if="${!tasks.isEmpty()}">
         <table class="table table-striped" >
             <thead>
                 <tr>
-                    <th scope="col">Task title</th>
-                    <th scope="col">Task Date & Time</th>
-                    <th scope="col">Details</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Subtask</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col" th:text="#{taskoverview.table.col.title}"></th>
+                    <th scope="col" th:text="#{taskoverview.table.col.datetime}"></th>
+                    <th scope="col" th:text="#{taskoverview.table.col.details}"></th>
+                    <th scope="col" th:text="#{taskoverview.table.col.edit}"></th>
+                    <th scope="col" th:text="#{taskoverview.table.col.subtask}"></th>
+                    <th scope="col" th:text="#{taskoverview.table.col.delete}"></th>
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +36,10 @@
             </tbody>
         </table>
 
-        <p><a class="btn btn-secondary text-left btn-submit-custom" href="#" th:href="@{/tasks/deleteall}"><i class="fas fa-trash-alt"></i> Remove all tasks</a></p>
+        <p><a class="btn btn-secondary text-left btn-submit-custom" href="#" th:href="@{/tasks/deleteall}" th:text="#{taskoverview.button.removeall}"></a></p>
     </div>
 
-    <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}"><i class="fas fa-thumbtack"></i> Add a new Task here!</a></p>
+    <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}" th:text="#{taskoverview.button.addnew}"></a></p>
 
     </div>
     </div>
