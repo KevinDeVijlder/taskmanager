@@ -20,8 +20,18 @@
                 </ul>
                     <div classs="text-right">
                         <ul class="navbar-nav ml-auto flex-nowrap">
+
                             <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks}" th:text="#{general.nav.taskoverview}"></a></li>
                             <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks/new}" th:text="#{general.nav.taskform}"></a></li>
+
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link customitemnavbar dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> <span th:text="#{general.nav.lang.selection}"></span></a><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link customitemnavbardropdown" href="#" th:href="@{''(lang=en)}">ENGLISH</a></li>
+                                    <li><a class="nav-link customitemnavbardropdown" href="#" th:href="@{''(lang=nl)}">NEDERLANDS</a></li>
+                                </ul>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -54,4 +64,5 @@
     </div>
 
 </body>
+
 </html>
