@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="general.html :: head"></div>
+<body>
+<div th:replace="general.html :: navigation"></div>
+<div class="personalcontainer">
+    <div class="container">
+
+        <h1 th:text="#{errorpage.h1title}"></h1>
+
+        <table class="table table-striped">
+            <tr>
+                <td class="errorpageleft" th:text="#{errorpage.date}"></td>
+                <td th:text="${timestamp}"/>
+            </tr>
+            <tr>
+                <td class="errorpageleft" th:text="#{errorpage.path}"></td>
+                <td th:text="${path}"/>
+            </tr>
+            <tr>
+                <td class="errorpageleft" th:text="#{errorpage.error}"></td>
+                <td th:text="${error}"/>
+            </tr>
+            <tr>
+                <td class="errorpageleft" th:text="#{errorpage.status}"></td>
+                <td th:text="${status}"/>
+            </tr>
+            <tr>
+                <td class="errorpageleft" th:text="#{errorpage.message}"></td>
+                <td th:text="${message}"/>
+            </tr>
+            <tr>
+                <td class="errorpageleft" th:text="#{errorpage.exception}"></td>
+                <td th:text="${exception}"/>
+            </tr>
+            <tr>
+                <td class="errorpageleft" th:text="#{errorpage.trace}"></td>
+                <td>
+                    <pre th:text="${trace}"/>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div th:replace="general.html :: footer"></div>
+<div th:replace="general.html :: bootstraplinks"></div>
+</body>
+</html>
