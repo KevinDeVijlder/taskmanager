@@ -46,7 +46,7 @@
                 </div>
 
                 <input type="hidden" th:value="${masterTask.taskId}" name="taskId"/>
-                <input class="btn btn-secondary text-left btn-submit-custom" type="submit" value="Add Subtask">
+                <input class="btn btn-secondary text-left btn-submit-custom" type="submit" th:value="#{subtask.form.submit}">
             </form>
 
             <p><a class="btn btn-secondary text-left btn-submit-custom2" href="#" th:href="@{/tasks/{taskId}(taskId=${masterTask.taskId})}" th:text="#{subtaskform.master}"></a></p>

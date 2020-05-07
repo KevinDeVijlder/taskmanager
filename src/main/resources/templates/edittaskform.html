@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <input class="btn btn-secondary text-left btn-submit-custom" type="submit" value="Edit Task">
+            <input class="btn btn-secondary text-left btn-submit-custom" type="submit" th:value="#{edittaskform.submit}">
         </form>
 
         <p><a class="btn btn-secondary text-left btn-submit-custom2" th:href="@{/tasks/{taskId}(taskId=${taskDTO.taskId})}" th:text="#{edittaskform.details}"></a></p>
