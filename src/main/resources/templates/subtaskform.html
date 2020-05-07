@@ -18,9 +18,9 @@
 
             <h2 th:text="#{subtaskform.h2title}"></h2>
             <div class="postitlayout">
-                <p class="titletaskbold" th:text="${masterTask.title}"></p>
-                <p th:text="${masterTask.description}"></p>
-                <p th:text="${#temporals.format(masterTask.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></p>
+                <p><span class="titletaskbold titlegreen" th:text="#{subtaskdetails.info.title} + ' '"></span><span th:text="${masterTask.title}"></span></p>
+                <p><span class="titletaskbold" th:text="#{subtaskdetails.info.description} + ' '"></span><span th:text="${masterTask.description}"></span></p>
+                <p><span class="titletaskbold" th:text="#{subtaskdetails.info.date} + ' '"></span><span th:text="${#temporals.format(masterTask.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></span></p>
             </div>
 
             <h2 th:text="#{subtaskform.form.h2title}"></h2>

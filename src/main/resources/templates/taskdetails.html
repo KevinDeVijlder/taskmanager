@@ -15,13 +15,13 @@
 
     <div th:if="${task != null}">
         <div class="postitlayout">
-            <p class="titletaskbold" th:text="${task.title}"></p>
-            <p th:text="${task.description}"></p>
-            <p th:text="${#temporals.format(task.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></p>
+            <p><span class="titletaskbold titlegreen" th:text="#{taskdetails.info.title} + ' '"></span><span th:text="${task.title}"></span></p>
+            <p><span class="titletaskbold" th:text="#{taskdetails.info.description} + ' '"></span><span th:text="${task.description}"></span></p>
+            <p><span class="titletaskbold" th:text="#{taskdetails.info.date} + ' '"></span><span th:text="${#temporals.format(task.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></span></p>
         </div>
 
         <div th:if="${subtaskList == null}">
-            <p th:text="#{taskdetails.nosubtasks}"></p>
+            <p class="nosubtasks" th:text="#{taskdetails.nosubtasks}"></p>
         </div>
 
         <div th:if="${subtaskList != null}">

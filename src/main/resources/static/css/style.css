@@ -52,20 +52,22 @@ th {
 }
 
 .postitlayout{
-    border-radius: 15px;
-    background-color: rgba(51,51,51,0.5);
-    color: white;
-    width: 250px;
-    height: auto;
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    overflow-wrap: break-word;
+    color: black;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: 1.2em;
 }
 
 .titletaskbold{
     font-weight: bold;
+}
+
+.titlegreen{
+    color: rgba(82,136,37,1);
+}
+
+.nosubtasks {
+    font-size: 1.2em;
 }
 
 .danger {
@@ -96,7 +98,7 @@ th {
 
 .btn-submit-custom{
     color: white;
-    background-color: #95D195;
+    background-color: rgba(82,136,37,1);
     text-transform: uppercase;
     border: none;
     border-radius: 0;
@@ -106,7 +108,7 @@ th {
 
 .btn-submit-custom:hover{
     color: white;
-    background-color: rgba(82,136,37,1);
+    background-color: rgba(82,136,37,0.8);
     text-transform: uppercase;
     border: none;
     border-radius: 0;
@@ -114,7 +116,7 @@ th {
 
 .btn-submit-custom2{
     color: white;
-    background-color: rgba(51, 51, 51, 0.5);
+    background-color: rgba(51, 51, 51, 0.8);
     text-transform: uppercase;
     border: none;
     border-radius: 0;
