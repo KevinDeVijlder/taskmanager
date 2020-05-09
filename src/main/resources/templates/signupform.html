@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="general.html :: head"></div>
+<body>
+<div th:replace="general.html :: navigation"></div>
+<div class="personalcontainer">
+    <div class="container">
+
+        <h1 class="marginbottomloginform" th:text="#{signupform.h1title}"></h1>
+
+        <form th:method="post" th:action="@{/signup}" th:object="${user}">
+            <div class="form-group row">
+                <label class="control-label formtitle col-sm-2" for="username"><span th:text="#{signupform.username}"></span></label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" id="username" name="username" th:field="*{username}">
+                </div>
+                <div class="danger">
+                    <p th:errors="*{username}"></p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label formtitle col-sm-2" for="firstname"><span th:text="#{signupform.firstname}"></span></label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" id="firstname" name="firstname" th:field="*{firstname}">
+                </div>
+                <div class="danger">
+                    <p th:errors="*{firstname}"></p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label formtitle col-sm-2" for="lastname"><span th:text="#{signupform.lastname}"></span></label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" id="lastname" name="lastname" th:field="*{lastname}">
+                </div>
+                <div class="danger">
+                    <p th:errors="*{lastname}"></p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label formtitle col-sm-2" for="password"><span th:text="#{signupform.password}"></span></label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="password" id="password" name="password">
+                </div>
+                <div class="danger">
+                    <p th:errors="*{password}"></p>
+                </div>
+            </div>
+
+            <input class="btn btn-secondary text-left btn-submit-custom" type="submit" th:value="#{signupform.submit}">
+        </form>
+
+    </div>
+</div>
+<div th:replace="general.html :: footer"></div>
+<div th:replace="general.html :: bootstraplinks"></div>
+</body>
+</html>

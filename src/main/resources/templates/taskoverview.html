@@ -28,7 +28,7 @@
                 <tr th:each="task : ${tasks}">
                     <td th:text="${task.title}"></td>
                     <td th:text="${#temporals.format(task.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></td>
-                    <td><a class="linkclass" th:href="@{/tasks/{taskId}(taskId=${task.taskId})}"><i class="fas fa-list-ul"></i></a></td>
+                    <td><a class="linkclass" th:href="@{/tasks/details/{taskId}(taskId=${task.taskId})}"><i class="fas fa-list-ul"></i></a></td>
                     <td><a class="linkclass" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}"><i class="far fa-edit"></i></a></td>
                     <td><a class="linkclass" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}"><i class="fas fa-plus-circle"></i></a></td>
                     <td><a class="linkclass" th:href="@{/tasks/delete/{taskId}(taskId=${task.taskId})}"><i class="fas fa-trash-alt"></i></a></td>

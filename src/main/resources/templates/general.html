@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,8 +21,13 @@
                     <div classs="text-right">
                         <ul class="navbar-nav ml-auto flex-nowrap">
 
-                            <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks}" th:text="#{general.nav.taskoverview}"></a></li>
-                            <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks/new}" th:text="#{general.nav.taskform}"></a></li>
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks}" th:text="#{general.nav.taskoverview}"></a></li>
+                            </div>
+
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks/new}" th:text="#{general.nav.taskform}"></a></li>
+                            </div>
 
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link customitemnavbar dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> <span th:text="#{general.nav.lang.selection}"></span></a><span class="caret"></span></a>
@@ -32,6 +37,23 @@
                                     <li><a class="nav-link customitemnavbardropdown" href="#" th:href="@{''(lang=fr)}">FRANÇAIS</a></li>
                                 </ul>
                             </li>
+
+                            <div sec:authorize="isAnonymous()">
+                                <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/login}" th:text="#{general.nav.login}"></a></li>
+                            </div>
+
+                            <div sec:authorize="isAnonymous()">
+                                <li class="nav-item"><a class="nav-link customitemnavbarsignup" href="#" th:href="@{/signup}" th:text="#{general.nav.signup}"></a></li>
+                            </div>
+
+
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/logout}" th:text="#{general.nav.logout}"></a></li>
+                            </div>
+
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item nav-link customitemnavbarusername"><i class="fas fa-user-circle"></i> <span sec:authentication="name"></span></li>
+                            </div>
 
                         </ul>
                     </div>

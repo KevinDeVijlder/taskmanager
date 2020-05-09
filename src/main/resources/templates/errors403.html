@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="general.html :: head"></div>
+<body>
+<div th:replace="general.html :: navigation"></div>
+<div class="personalcontainer">
+    <div class="container">
+
+        <h1 class="marginbottomloginform" th:text="#{error403.h1title}"></h1>
+        <p th:text="#{error403.text}"></p>
+
+    </div>
+</div>
+<div th:replace="general.html :: footer"></div>
+<div th:replace="general.html :: bootstraplinks"></div>
+</body>
+</html>
