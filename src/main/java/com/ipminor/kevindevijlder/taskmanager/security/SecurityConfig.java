@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        /* http.csrf().disable().authorizeRequests().antMatchers("/").permitAll();
         http.headers().frameOptions().disable();*/
         http.csrf().disable().authorizeRequests()
-                .mvcMatchers("/signup", "/", "../resources/static/**", "/css/**", "/images/**").permitAll()
+                .mvcMatchers("/signup", "/", "../resources/static/**", "/css/**", "/images/**", "/login/**", "/login").permitAll()
                 .mvcMatchers("/tasks", "/tasks/details/**").hasAnyAuthority("ADMIN", "USER")
                 .mvcMatchers("/tasks/edit/**","/tasks/**/sub/create", "/tasks/delete/**" ,"/tasks/deleteall", "/tasks/new", "/h2-console/login.do").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
