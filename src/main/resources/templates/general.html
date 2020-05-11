@@ -25,7 +25,7 @@
                                 <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks}" th:text="#{general.nav.taskoverview}"></a></li>
                             </div>
 
-                            <div sec:authorize="isAuthenticated()">
+                            <div sec:authorize="hasAuthority('ADMIN')">
                                 <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks/new}" th:text="#{general.nav.taskform}"></a></li>
                             </div>
 

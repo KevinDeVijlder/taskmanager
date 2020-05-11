@@ -42,12 +42,17 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String postCreateUser(@ModelAttribute("user") @Valid CreateUserDTO user, BindingResult bindingResult) {
+    public String postCreateUser(@ModelAttribute("user") @Valid CreateUserDTO user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "signupform";
+        } else {
+            if(userService.createUser(user) == true){
+                model.addAttribute("globalerroruseralreadyexists", true);
+                return "signupform";
+            }
+            userService.createUser(user);
+            return "redirect:/login";
         }
-        userService.createUser(user);
-        return "redirect:/login";
     }
 
     @RequestMapping("/403")

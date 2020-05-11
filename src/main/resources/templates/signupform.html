@@ -8,6 +8,10 @@
 
         <h1 class="marginbottomloginform" th:text="#{signupform.h1title}"></h1>
 
+        <div th:if="${globalerroruseralreadyexists == true}">
+            <p class=danger th:text="#{signupform.username.taken}"></p>
+        </div>
+
         <form th:method="post" th:action="@{/signup}" th:object="${user}">
             <div class="form-group row">
                 <label class="control-label formtitle col-sm-2" for="username"><span th:text="#{signupform.username}"></span></label>

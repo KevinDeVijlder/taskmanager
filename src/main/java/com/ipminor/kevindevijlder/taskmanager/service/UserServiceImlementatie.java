@@ -35,15 +35,20 @@ public class UserServiceImlementatie implements UserService{
     }
 
     @Override
-    public UserDTO createUser(CreateUserDTO userDTO) {
-        User user = new User();
-        user.setUsername(userDTO.getUsername());
-        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setFirstname(userDTO.getFirstname());
-        user.setLastname(userDTO.getLastname());
-        user.setRole(userDTO.getUsername().endsWith("a") ? Roles.ADMIN : Roles.USER);
-        user = userRepository.saveAndFlush(user);
-        return convert(user);
+    public boolean createUser(CreateUserDTO userDTO) {
+        boolean alreadyexists = false;
+        if(userRepository.findByUsername(userDTO.getUsername()) != null){
+            alreadyexists=true;
+        } else {
+            User user = new User();
+            user.setUsername(userDTO.getUsername());
+            user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+            user.setFirstname(userDTO.getFirstname());
+            user.setLastname(userDTO.getLastname());
+            user.setRole(Roles.USER);
+            user = userRepository.saveAndFlush(user);
+        }
+        return alreadyexists;
     }
 
     @Override
