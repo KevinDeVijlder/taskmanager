@@ -31,7 +31,7 @@ public class RestTaskController {
 
 
     @PostMapping("/tasks")
-    public TaskDTO createNewHead(@RequestBody @Valid TaskDTO taskDTO){
+    public TaskDTO createNewTask(@RequestBody @Valid TaskDTO taskDTO){
         return taskService.addTask(taskDTO);
     }
 

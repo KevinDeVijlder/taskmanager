@@ -37,7 +37,7 @@ public class TaskServiceImplementatie implements TaskService{
         task.setDescription(taskDTO.getDescription());
         task.setDateAndTimeOfTask(taskDTO.getDateAndTimeOfTask());
         task.setSubTasks(taskDTO.getSubTasks());
-        task = taskRepository.save(task);
+        task = taskRepository.saveAndFlush(task);
         return convert(task);
     }
 
@@ -54,7 +54,7 @@ public class TaskServiceImplementatie implements TaskService{
         task.setDescription(taskDTO.getDescription());
         task.setDateAndTimeOfTask(taskDTO.getDateAndTimeOfTask());
 
-        task = taskRepository.save(task);
+        task = taskRepository.saveAndFlush(task);
         return convert(task);
     }
 

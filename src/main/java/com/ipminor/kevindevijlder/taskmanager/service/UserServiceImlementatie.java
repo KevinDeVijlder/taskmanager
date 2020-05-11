@@ -5,6 +5,7 @@ import com.ipminor.kevindevijlder.taskmanager.dto.UserDTO;
 import com.ipminor.kevindevijlder.taskmanager.model.Roles;
 import com.ipminor.kevindevijlder.taskmanager.model.User;
 import com.ipminor.kevindevijlder.taskmanager.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,6 +19,7 @@ public class UserServiceImlementatie implements UserService{
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Autowired
     public UserServiceImlementatie(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -40,7 +42,7 @@ public class UserServiceImlementatie implements UserService{
         user.setFirstname(userDTO.getFirstname());
         user.setLastname(userDTO.getLastname());
         user.setRole(userDTO.getUsername().endsWith("a") ? Roles.ADMIN : Roles.USER);
-        user = userRepository.save(user);
+        user = userRepository.saveAndFlush(user);
         return convert(user);
     }
 

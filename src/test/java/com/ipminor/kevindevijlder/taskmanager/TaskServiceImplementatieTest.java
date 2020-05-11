@@ -168,6 +168,6 @@ public class TaskServiceImplementatieTest {
     //test getsubtasks
 
     //test addsubtask
-*/
-    //test getsubtask
+
+    //test getsubtask*/
 }
