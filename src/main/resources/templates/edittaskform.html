@@ -32,7 +32,9 @@
                     <label for="title" class="formtitle" th:text="#{edittaskform.form.title}"></label>
                     <input class="form-control" id="title" type="text" th:field="*{title}">
                     <div class="danger">
-                        <p th:errors="*{title}"></p>
+                        <ul class="listpadding">
+                            <li th:each="erroredittasktitle : ${#fields.errors('title')}" th:text="${erroredittasktitle}" />
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -42,7 +44,9 @@
                     <label for="description" class="formtitle" th:text="#{edittaskform.form.description}"></label>
                     <textarea class="form-control" id="description" rows="5" th:field="*{description}"></textarea>
                     <div class="danger">
-                        <p th:errors="*{description}"></p>
+                        <ul class="listpadding">
+                            <li th:each="erroredittaskdescription : ${#fields.errors('description')}" th:text="${erroredittaskdescription}" />
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -52,7 +56,9 @@
                     <label for="dateAndTimeOfTask" class="formtitle" th:text="#{edittaskform.form.date}"></label>
                     <input class="form-control" id="dateAndTimeOfTask" type="datetime-local" th:field="*{dateAndTimeOfTask}">
                     <div class="danger">
-                        <p th:errors="*{dateAndTimeOfTask}"></p>
+                        <ul class="listpadding">
+                            <li th:each="erroredittaskdateAndTimeOfTask : ${#fields.errors('dateAndTimeOfTask')}" th:text="${erroredittaskdateAndTimeOfTask}" />
+                        </ul>
                     </div>
                 </div>
             </div>

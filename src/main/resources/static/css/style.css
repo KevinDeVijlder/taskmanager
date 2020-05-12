@@ -71,7 +71,14 @@ th {
 }
 
 .danger {
+    margin-top: 10px;
     color: red;
+}
+
+.listpadding {
+    list-style-position: inside;
+    padding: 0;
+    margin: 2px;
 }
 
 .personalcontainer{
