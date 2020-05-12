@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -42,16 +43,18 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String postCreateUser(@ModelAttribute("user") @Valid CreateUserDTO user, BindingResult bindingResult, Model model) {
+    public String postCreateUser(@ModelAttribute("user") @Valid CreateUserDTO user, BindingResult bindingResult, Model model, RedirectAttributes redirAttrs) {
         if (bindingResult.hasErrors()) {
             return "signupform";
         } else {
             if(userService.createUser(user) == true){
                 model.addAttribute("globalerroruseralreadyexists", true);
                 return "signupform";
+            } else {
+                userService.createUser(user);
+                redirAttrs.addFlashAttribute("registrationconfirmed", true);
+                return "redirect:/login";
             }
-            userService.createUser(user);
-            return "redirect:/login";
         }
     }
 

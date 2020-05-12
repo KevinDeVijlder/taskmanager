@@ -75,6 +75,28 @@ th {
     color: red;
 }
 
+.succescustom{
+    background-color: #F9FFF0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #BBEF76;
+    color: black;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.dangercustom{
+    background-color: #FFEBEE;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #D73F36;
+    color: #D73F36;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
 .listpadding {
     list-style-position: inside;
     padding: 0;

@@ -39,16 +39,18 @@ public class UserServiceImlementatie implements UserService{
         boolean alreadyexists = false;
         if(userRepository.findByUsername(userDTO.getUsername()) != null){
             alreadyexists=true;
+            return alreadyexists;
         } else {
             User user = new User();
             user.setUsername(userDTO.getUsername());
             user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-            user.setFirstname(userDTO.getFirstname());
-            user.setLastname(userDTO.getLastname());
+            user.setPasswordconfirmed(passwordEncoder.encode(userDTO.getPasswordconfirmed()));
+            user.setFullname(userDTO.getFullname());
+            user.setEmail(userDTO.getEmail());
             user.setRole(Roles.USER);
             user = userRepository.saveAndFlush(user);
+            return alreadyexists;
         }
-        return alreadyexists;
     }
 
     @Override

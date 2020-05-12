@@ -12,9 +12,10 @@ public class User {
     private Long userId;
 
     private String username;
-    private String firstname;
-    private String lastname;
+    private String fullname;
+    private String email;
     private String password;
+    private String passwordconfirmed;
     private Roles role;
 
     public Long getUserId() {
@@ -33,22 +34,6 @@ public class User {
         this.username = username;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -63,5 +48,29 @@ public class User {
 
     public void setRole(Roles role) {
         this.role = role;
+    }
+
+    public String getPasswordconfirmed() {
+        return passwordconfirmed;
+    }
+
+    public void setPasswordconfirmed(String passwordconfirmed) {
+        this.passwordconfirmed = passwordconfirmed;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }

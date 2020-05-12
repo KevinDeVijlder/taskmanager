@@ -1,8 +1,12 @@
 package com.ipminor.kevindevijlder.taskmanager.dto;
 
+import com.ipminor.kevindevijlder.taskmanager.config.FieldMatch;
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@FieldMatch(first = "password", second = "passwordconfirmed", message = "Passwords are not equal.")
 public class CreateUserDTO {
     @NotEmpty(message = "{user.username.notempty}")
     @Size.List({
@@ -11,19 +15,16 @@ public class CreateUserDTO {
     })
     private String username;
 
-    @NotEmpty(message = "{user.firstname.notempty}")
+    @NotEmpty(message = "{user.fullname.notempty}")
     @Size.List({
-            @Size(min = 3, message = "{user.firstname.min}"),
-            @Size(max = 20, message = "{user.firstname.max}")
+            @Size(min = 5, message = "{user.fullname.min}"),
+            @Size(max = 30, message = "{user.fullname.max}")
     })
-    private String firstname;
+    private String fullname;
 
-    @NotEmpty(message = "{user.lastname.notempty}")
-    @Size.List({
-            @Size(min = 5, message = "{user.lastname.min}"),
-            @Size(max = 30, message = "{user.lastname.max}")
-    })
-    private String lastname;
+    @Email(message = "{user.email.valid}")
+    @NotEmpty(message = "{user.email.notempty}")
+    private String email;
 
     @NotEmpty(message = "{user.password.notempty}")
     @Size.List({
@@ -31,6 +32,15 @@ public class CreateUserDTO {
             @Size(max = 50, message = "{user.password.max}")
     })
     private String password;
+
+    @NotEmpty(message = "{user.passwordconfirmed.notempty}")
+    @Size.List({
+            @Size(min = 8, message = "{user.passwordconfirmed.min}"),
+            @Size(max = 50, message = "{user.passwordconfirmed.max}")
+    })
+    private String passwordconfirmed;
+
+
 
     public String getUsername() {
         return username;
@@ -40,21 +50,6 @@ public class CreateUserDTO {
         this.username = username;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
 
     public String getPassword() {
         return password;
@@ -62,5 +57,29 @@ public class CreateUserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPasswordconfirmed() {
+        return passwordconfirmed;
+    }
+
+    public void setPasswordconfirmed(String passwordconfirmed) {
+        this.passwordconfirmed = passwordconfirmed;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }

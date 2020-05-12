@@ -5,8 +5,8 @@ import com.ipminor.kevindevijlder.taskmanager.model.Roles;
 public class UserDTO {
     private Long userId;
     private String username;
-    private String firstname;
-    private String lastname;
+    private String fullname;
+    private String email;
     private Roles role;
 
     public Long getUserId() {
@@ -33,19 +33,19 @@ public class UserDTO {
         this.username = username;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }
