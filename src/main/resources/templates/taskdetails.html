@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div th:replace="general.html :: head"></div>
 <body>
 <div th:replace="general.html :: navigation"></div>
@@ -10,7 +10,9 @@
 
     <div th:if="${task == null}">
         <p th:text="#{taskdetails.tasknotfound}"></p>
-        <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}" th:text="#{taskdetails.addnewtask}"></a></p>
+        <div sec:authorize="hasAuthority('ADMIN')">
+            <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}" th:text="#{taskdetails.addnewtask}"></a></p>
+        </div>
     </div>
 
     <div th:if="${task != null}">
@@ -45,10 +47,11 @@
 
 
     <p><a class="btn btn-secondary text-left btn-submit-custom" href="#" th:href="@{/tasks}" th:text="#{taskdetails.returntaskoverview}"></a></p>
-
-    <div th:if="${task != null}">
-        <p><a class="btn btn-outline-secondary marginbuttons text-left btn-submit-custom2" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}" th:text="#{taskdetails.edit}"></a></p>
-        <p><a class="btn btn-outline-secondary marginbuttons text-left btn-submit-custom2" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}" th:text="#{taskdetails.createsub}"></a></p>
+    <div sec:authorize="hasAuthority('ADMIN')">
+        <div th:if="${task != null}">
+            <p><a class="btn btn-outline-secondary marginbuttons text-left btn-submit-custom2" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}" th:text="#{taskdetails.edit}"></a></p>
+            <p><a class="btn btn-outline-secondary marginbuttons text-left btn-submit-custom2" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}" th:text="#{taskdetails.createsub}"></a></p>
+        </div>
     </div>
 
 </div>

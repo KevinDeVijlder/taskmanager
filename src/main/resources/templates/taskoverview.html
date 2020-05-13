@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div th:replace="general.html :: head"></div>
 <body>
     <div th:replace="general.html :: navigation"></div>
@@ -19,9 +19,11 @@
                     <th scope="col" th:text="#{taskoverview.table.col.title}"></th>
                     <th scope="col" th:text="#{taskoverview.table.col.datetime}"></th>
                     <th scope="col" th:text="#{taskoverview.table.col.details}"></th>
-                    <th scope="col" th:text="#{taskoverview.table.col.edit}"></th>
-                    <th scope="col" th:text="#{taskoverview.table.col.subtask}"></th>
-                    <th scope="col" th:text="#{taskoverview.table.col.delete}"></th>
+                    <div sec:authorize="hasAuthority('ADMIN')">
+                        <th scope="col" th:text="#{taskoverview.table.col.edit}"></th>
+                        <th scope="col" th:text="#{taskoverview.table.col.subtask}"></th>
+                        <th scope="col" th:text="#{taskoverview.table.col.delete}"></th>
+                    </div>
                 </tr>
             </thead>
             <tbody>
@@ -29,17 +31,23 @@
                     <td th:text="${task.title}"></td>
                     <td th:text="${#temporals.format(task.dateAndTimeOfTask, 'd MMMM yyyy @ HH:mm')}"></td>
                     <td><a class="linkclass" th:href="@{/tasks/details/{taskId}(taskId=${task.taskId})}"><i class="fas fa-list-ul"></i></a></td>
-                    <td><a class="linkclass" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}"><i class="far fa-edit"></i></a></td>
-                    <td><a class="linkclass" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}"><i class="fas fa-plus-circle"></i></a></td>
-                    <td><a class="linkclass" th:href="@{/tasks/delete/{taskId}(taskId=${task.taskId})}"><i class="fas fa-trash-alt"></i></a></td>
+                    <div sec:authorize="hasAuthority('ADMIN')">
+                        <td><a class="linkclass" th:href="@{/tasks/edit/{taskId}(taskId=${task.taskId})}"><i class="far fa-edit"></i></a></td>
+                        <td><a class="linkclass" th:href="@{/tasks/{taskId}/sub/create(taskId=${task.taskId})}"><i class="fas fa-plus-circle"></i></a></td>
+                        <td><a class="linkclass" th:href="@{/tasks/delete/{taskId}(taskId=${task.taskId})}"><i class="fas fa-trash-alt"></i></a></td>
+                    </div>
                 </tr>
             </tbody>
         </table>
 
-        <p><a class="btn btn-secondary text-left btn-submit-custom" href="#" th:href="@{/tasks/deleteall}" th:text="#{taskoverview.button.removeall}"></a></p>
+        <div sec:authorize="hasAuthority('ADMIN')">
+            <p><a class="btn btn-secondary text-left btn-submit-custom" href="#" th:href="@{/tasks/deleteall}" th:text="#{taskoverview.button.removeall}"></a></p>
+        </div>
     </div>
 
-    <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}" th:text="#{taskoverview.button.addnew}"></a></p>
+        <div sec:authorize="hasAuthority('ADMIN')">
+            <p><a class="btn btn-secondary btn-submit-custom2" href="#" th:href="@{/tasks/new}" th:text="#{taskoverview.button.addnew}"></a></p>
+        </div>
 
     </div>
     </div>
