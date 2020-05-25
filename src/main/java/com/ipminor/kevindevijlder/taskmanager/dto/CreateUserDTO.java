@@ -6,7 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-@FieldMatch(first = "password", second = "passwordconfirmed", message = "Passwords are not equal.")
+@FieldMatch(first = "password", second = "passwordconfirmed", message = "{user.notequalpasswords}")
 public class CreateUserDTO {
     @NotEmpty(message = "{user.username.notempty}")
     @Size.List({

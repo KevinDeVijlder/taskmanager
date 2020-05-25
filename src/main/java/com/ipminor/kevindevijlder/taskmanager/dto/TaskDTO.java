@@ -66,15 +66,6 @@ public class TaskDTO {
         this.dateAndTimeOfTask = dateAndTimeOfTask;
     }
 
-    public void AddSubTask(@Valid SubTaskDTO subTaskDTO){
-        SubTask subTask = new SubTask(subTaskDTO.getTitle(), subTaskDTO.getDescription());
-        subTasks.add(subTask);
-    }
-
-    public void AddSubTaskZonderDTO(SubTask subTask){
-        subTasks.add(subTask);
-    }
-
     public List<SubTask> getSubTasks(){
         return this.subTasks;
     }

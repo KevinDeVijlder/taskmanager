@@ -41,25 +41,5 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
         }
         return true;
     }
-    /*private String first;
-    private String second;
 
-    @Override
-    public void initialize(final FieldMatch constraintAnnotation) {
-        first = constraintAnnotation.first();
-        second = constraintAnnotation.second();
-    }
-
-    @Override
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
-
-        Object fieldValue = new BeanWrapperImpl(value).getPropertyValue(first);
-        Object fieldMatchValue = new BeanWrapperImpl(value).getPropertyValue(second);
-
-        if (fieldValue != null) {
-            return fieldValue.equals(fieldMatchValue);
-        } else {
-            return fieldMatchValue == null;
-        }
-    }*/
 }

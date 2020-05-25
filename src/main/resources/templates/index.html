@@ -10,16 +10,6 @@
 
     <p th:text="#{index.paragraph}"></p>
 
-        <th:block th:each="r, iter:${#authentication.getName()}">
-            <span th:text="${r}"></span>
-            <th:block th:if="${!iter.last}">, </th:block>
-        </th:block>
-
-        <th:block th:each="r, iter:${#authentication.getAuthorities()}">
-            <span th:text="${r}"></span>
-            <th:block th:if="${!iter.last}">, </th:block>
-        </th:block>
-
     </div>
     </div>
     <div th:replace="general.html :: footer"></div>
