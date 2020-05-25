@@ -52,7 +52,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertFalse(violations.isEmpty());
-        assertEquals(violations.size(), 1);
+        assertEquals(1, violations.size());
 
     }
 
@@ -68,7 +68,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertFalse(violations.isEmpty());
-        assertEquals(violations.size(), 2);
+        assertEquals(2, violations.size());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertFalse(violations.isEmpty());
-        assertEquals(violations.size(), 1);
+        assertEquals(1, violations.size());
     }
 
     @Test
@@ -98,7 +98,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertFalse(violations.isEmpty());
-        assertEquals(violations.size(), 1);
+        assertEquals(1, violations.size());
     }
 
     @Test
@@ -117,7 +117,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertFalse(violations.isEmpty());
-        assertEquals(violations.size(), 1);
+        assertEquals(1, violations.size());
     }
 
     @Test
@@ -132,7 +132,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertFalse(violations.isEmpty());
-        assertEquals(violations.size(), 2);
+        assertEquals(2, violations.size());
     }
 
     @Test
@@ -147,7 +147,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertFalse(violations.isEmpty());
-        assertEquals(violations.size(), 1);
+        assertEquals(1, violations.size());
     }
 
     @Test
@@ -162,7 +162,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertFalse(violations.isEmpty());
-        assertEquals(violations.size(), 5);
+        assertEquals(5, violations.size());
     }
 
     @Test
@@ -203,7 +203,7 @@ public class TaskTest {
 
         Set<ConstraintViolation<TaskDTO>> violations = validator.validate(taskDTO);
         assertTrue(violations.isEmpty());
-        assertEquals(taskDTO.getSubTasks().size(), 1);
+        assertEquals(1, taskDTO.getSubTasks().size());
     }
 
 }

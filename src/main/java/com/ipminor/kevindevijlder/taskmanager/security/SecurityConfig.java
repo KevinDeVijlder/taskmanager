@@ -26,8 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       /* http.csrf().disable().authorizeRequests().antMatchers("/").permitAll();
-        http.headers().frameOptions().disable();*/
         http.csrf().disable().authorizeRequests()
                 .mvcMatchers("/signup", "/", "../resources/static/**", "/css/**", "/images/**", "/login/**", "/login").permitAll()
                 .mvcMatchers("/tasks", "/tasks/details/**").hasAnyAuthority("ADMIN", "USER")
