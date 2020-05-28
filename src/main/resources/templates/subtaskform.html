@@ -24,7 +24,7 @@
             </div>
 
             <h2 th:text="#{subtaskform.form.h2title}"></h2>
-            <form method="post" action="/tasks/sub/createTask" th:object="${subTaskDTO}">
+            <form th:method="post" th:action="@{/tasks/sub/createTask}" th:object="${subTaskDTO}">
                 <div class="row">
                     <div class="form-group col-xs-5 col-lg-4">
                         <label for="title" class="formtitle" th:text="#{subtaskform.form.title}"></label>

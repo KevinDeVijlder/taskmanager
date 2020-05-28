@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
+        http.authorizeRequests()
                 .mvcMatchers("/signup", "/", "../resources/static/**", "/css/**", "/images/**", "/login/**", "/login").permitAll()
                 .mvcMatchers("/tasks", "/tasks/details/**").hasAnyAuthority("ADMIN", "USER")
                 .mvcMatchers("/tasks/edit/**","/tasks/**/sub/create", "/tasks/delete/**" ,"/tasks/deleteall", "/tasks/new", "/h2-console/login.do").hasAuthority("ADMIN")

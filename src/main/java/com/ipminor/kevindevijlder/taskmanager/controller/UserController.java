@@ -36,6 +36,12 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String getLogoutForm() {
+        return "logout";
+    }
+
+
     @GetMapping("/signup")
     public String getCreateUser(Model model) {
         model.addAttribute("user", new CreateUserDTO());

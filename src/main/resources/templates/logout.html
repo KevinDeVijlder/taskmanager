@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="general.html :: head"></div>
+<body>
+<div th:replace="general.html :: navigation"></div>
+<div class="personalcontainer">
+    <div class="container">
+
+        <h1 class="marginbottomloginform" th:text="#{logoutform.h1title}"></h1>
+
+        <p th:text="#{logoutform.text} + ' ' + ${#authentication.getName()}"></p>
+
+        <div class="form-group w-25">
+            <form th:action="@{/logout}" th:method="post">
+                <input class="btn btn-secondary btn-submit-custom btn-block" type="submit" th:value="#{general.nav.logout}">
+            </form>
+        </div>
+
+    </div>
+</div>
+<div th:replace="general.html :: footer"></div>
+<div th:replace="general.html :: bootstraplinks"></div>
+</body>
+</html>

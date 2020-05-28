@@ -19,7 +19,7 @@
             <p th:text="#{deletetaskpage.confirmation}"></p>
             <p th:text="${taskToDelete.taskId} + ' ' + #{deletetaskpage.whattodelete} + ' ' + ${taskToDelete.title}"></p>
 
-            <form method="post" action="/tasks/delete">
+            <form Th:method="post" th:action="@{/tasks/delete}">
                 <div class="row">
                     <div class="form-group col-xs-5 col-lg-4">
                         <input type="radio" id="yes" name="confirmation" value="yes" checked>

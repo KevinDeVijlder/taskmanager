@@ -12,7 +12,7 @@
         <p th:text="#{deletealltaskpage.sure}"></p>
         <p th:text="#{deletealltaskpage.amountoftasks} + ' ' + ${amounttasktodelete}"></p>
 
-        <form method="post" action="/tasks/deleteallconfirmed">
+        <form Th:method="post" th:action="@{/tasks/deleteallconfirmed}">
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
                     <input type="radio" id="yes" name="confirmation" value="yes" checked>

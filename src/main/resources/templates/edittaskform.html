@@ -16,7 +16,7 @@
     </div>
 
     <div th:if="${taskDTO != null}">
-        <form method="post" action="/tasks/edit" th:object="${taskDTO}">
+        <form th:method="post" th:action="@{/tasks/edit}" th:object="${taskDTO}">
             <div class="row">
                 <div class="form-group col-xs-5 col-lg-4">
                     <label for="taskId" class="formtitle" th:text="#{edittaskform.form.id}"></label>

@@ -9,7 +9,7 @@
 
     <h2 th:text="#{taskform.h2}"></h2>
 
-    <form method="post" action="/tasks/createTask" th:object="${taskDTO}">
+    <form th:method="post" th:action="@{/tasks/createTask}" th:object="${taskDTO}">
         <div class="row">
             <div class="form-group col-xs-5 col-lg-4">
                 <label for="title" class="formtitle" th:text="#{taskform.form.title}"></label>
