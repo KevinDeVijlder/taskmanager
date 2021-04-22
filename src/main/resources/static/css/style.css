@@ -47,25 +47,60 @@ th {
     color: #528825;
 }
 
+.errorpageleft{
+    color: #528825;
+}
+
 .postitlayout{
-    border-radius: 15px;
-    background-color: rgba(51,51,51,0.5);
-    color: white;
-    width: 250px;
-    height: auto;
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    overflow-wrap: break-word;
+    color: black;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: 1.2em;
 }
 
 .titletaskbold{
     font-weight: bold;
 }
 
+.titlegreen{
+    color: rgba(82,136,37,1);
+}
+
+.nosubtasks {
+    font-size: 1.2em;
+}
+
 .danger {
+    margin-top: 10px;
     color: red;
+}
+
+.succescustom{
+    background-color: #F9FFF0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #BBEF76;
+    color: black;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.dangercustom{
+    background-color: #FFEBEE;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #D73F36;
+    color: #D73F36;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.listpadding {
+    list-style-position: inside;
+    padding: 0;
+    margin: 2px;
 }
 
 .personalcontainer{
@@ -92,7 +127,7 @@ th {
 
 .btn-submit-custom{
     color: white;
-    background-color: #95D195;
+    background-color: rgba(82,136,37,1);
     text-transform: uppercase;
     border: none;
     border-radius: 0;
@@ -102,7 +137,7 @@ th {
 
 .btn-submit-custom:hover{
     color: white;
-    background-color: rgba(82,136,37,1);
+    background-color: rgba(82,136,37,0.8);
     text-transform: uppercase;
     border: none;
     border-radius: 0;
@@ -110,7 +145,7 @@ th {
 
 .btn-submit-custom2{
     color: white;
-    background-color: rgba(51, 51, 51, 0.5);
+    background-color: rgba(51, 51, 51, 0.8);
     text-transform: uppercase;
     border: none;
     border-radius: 0;
@@ -120,6 +155,25 @@ th {
 }
 
 .btn-submit-custom2:hover{
+    color: white;
+    background-color: #333333;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0;
+}
+
+.btn-submit-custom3{
+    color: white;
+    background-color: rgba(51, 51, 51, 0.8);
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.btn-submit-custom3:hover{
     color: white;
     background-color: #333333;
     text-transform: uppercase;
@@ -159,4 +213,48 @@ table{
 /*button*/
 .marginbuttons {
     margin-top: 1em;
+}
+
+.dropdown-menu{
+    background-color: rgb(51,51,51);
+}
+
+.customitemnavbardropdown{
+    color: white;
+    font-weight: bold;
+}
+
+.customitemnavbardropdown:hover{
+    color: #528825;
+    background-color: white;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.customitemnavbarusername{
+    background-color: #528825;
+    color: white;
+    font-weight: bold;
+}
+
+.customitemnavbarusername:hover{
+    background-color: #528825;
+    color: white;
+    font-weight: bold;
+}
+
+.customitemnavbarsignup{
+    background-color: #528825;
+    color: white;
+    font-weight: bold;
+}
+
+.customitemnavbarsignup:hover{
+    background-color: white;
+    color: #528825;
+    font-weight: bold;
+}
+
+.marginbottomloginform{
+    margin-bottom: 1em;
 }

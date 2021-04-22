@@ -7,40 +7,46 @@
 <div class="personalcontainer">
 <div class="container">
 
-    <h2>New Task Form</h2>
+    <h2 th:text="#{taskform.h2}"></h2>
 
-    <form method="post" action="/tasks/createTask" th:object="${taskDTO}">
+    <form th:method="post" th:action="@{/tasks/createTask}" th:object="${taskDTO}">
         <div class="row">
             <div class="form-group col-xs-5 col-lg-4">
-                <label for="title" class="formtitle">Title</label>
+                <label for="title" class="formtitle" th:text="#{taskform.form.title}"></label>
                 <input class="form-control" id="title" type="text" th:field="*{title}">
                 <div class="danger">
-                    <p th:errors="*{title}"></p>
+                    <ul class="listpadding">
+                        <li th:each="errortitle : ${#fields.errors('title')}" th:text="${errortitle}" />
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-xs-5 col-lg-4">
-                <label for="description" class="formtitle">Description</label>
+                <label for="description" class="formtitle" th:text="#{taskform.form.description}"></label>
                 <textarea class="form-control" id="description" rows="5" th:field="*{description}"></textarea>
                 <div class="danger">
-                    <p th:errors="*{description}"></p>
+                    <ul class="listpadding">
+                        <li th:each="errordescription : ${#fields.errors('description')}" th:text="${errordescription}" />
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-xs-5 col-lg-4">
-                <label for="dateAndTimeOfTask" class="formtitle">Date and time of task</label>
+                <label for="dateAndTimeOfTask" class="formtitle" th:text="#{taskform.form.dateandtime}"></label>
                 <input class="form-control" id="dateAndTimeOfTask" type="datetime-local" th:field="*{dateAndTimeOfTask}">
                 <div class="danger">
-                    <p th:errors="*{dateAndTimeOfTask}"></p>
+                    <ul class="listpadding">
+                        <li th:each="errordate : ${#fields.errors('dateAndTimeOfTask')}" th:text="${errordate}" />
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <input class="btn btn-secondary text-left btn-submit-custom" type="submit" value="Add Task">
+        <input class="btn btn-secondary text-left btn-submit-custom" type="submit" th:value="#{taskform.form.submit}">
     </form>
 
 </div>

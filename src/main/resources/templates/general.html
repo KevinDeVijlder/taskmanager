@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:form="http://www.w3.org/1999/xhtml">
 <head th:fragment="head">
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Tasks</title>
+    <title th:text="#{general.title}"></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
@@ -16,12 +17,45 @@
             <nav class="navbar navbar-expand-lg ">
                 <div class="container">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/}">INDEX</a></li>
+                    <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/}" th:text="#{general.nav.home}"></a></li>
                 </ul>
                     <div classs="text-right">
                         <ul class="navbar-nav ml-auto flex-nowrap">
-                            <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks}">TASK OVERVIEW</a></li>
-                            <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks/new}">TASK FORM</a></li>
+
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks}" th:text="#{general.nav.taskoverview}"></a></li>
+                            </div>
+
+                            <div sec:authorize="hasAuthority('ADMIN')">
+                                <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/tasks/new}" th:text="#{general.nav.taskform}"></a></li>
+                            </div>
+
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link customitemnavbar dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe"></i> <span th:text="#{general.nav.lang.selection}"></span></a><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link customitemnavbardropdown" href="#" th:href="@{''(lang=en)}">ENGLISH</a></li>
+                                    <li><a class="nav-link customitemnavbardropdown" href="#" th:href="@{''(lang=nl)}">NEDERLANDS</a></li>
+                                    <li><a class="nav-link customitemnavbardropdown" href="#" th:href="@{''(lang=fr)}">FRANÇAIS</a></li>
+                                </ul>
+                            </li>
+
+                            <div sec:authorize="isAnonymous()">
+                                <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/login}" th:text="#{general.nav.login}"></a></li>
+                            </div>
+
+                            <div sec:authorize="isAnonymous()">
+                                <li class="nav-item"><a class="nav-link customitemnavbarsignup" href="#" th:href="@{/signup}" th:text="#{general.nav.signup}"></a></li>
+                            </div>
+
+
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item"><a class="nav-link customitemnavbar" href="#" th:href="@{/logout}" th:text="#{general.nav.logout}"></a></li>
+                            </div>
+
+                            <div sec:authorize="isAuthenticated()">
+                                <li class="nav-item nav-link customitemnavbarusername"><i class="fas fa-user-circle"></i> <span sec:authentication="name"></span></li>
+                            </div>
+
                         </ul>
                     </div>
                 </div>
@@ -31,7 +65,7 @@
 
     <footer th:fragment="footer">
         <div class="text-center copyrightfooter margintopfooter">
-            <p>Kevin De Vijlder Ip minor Taskmanager</p>
+            <p th:text="#{general.footer.name}"></p>
         </div>
 
         <div class="container d-flex justify-content-center linksfooter">
@@ -43,7 +77,7 @@
         </div>
 
         <div class="text-center py-3 copyrightfooter">
-            <p>&copy; Copyright 2020. All Rights Reserved.</p>
+            <p th:text="#{general.footer.copyright}"></p>
         </div>
     </footer>
 
@@ -54,4 +88,5 @@
     </div>
 
 </body>
+
 </html>

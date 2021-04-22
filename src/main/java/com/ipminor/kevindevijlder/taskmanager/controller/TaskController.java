@@ -2,10 +2,13 @@ package com.ipminor.kevindevijlder.taskmanager.controller;
 
 import com.ipminor.kevindevijlder.taskmanager.dto.SubTaskDTO;
 import com.ipminor.kevindevijlder.taskmanager.dto.TaskDTO;
+import com.ipminor.kevindevijlder.taskmanager.model.User;
 import com.ipminor.kevindevijlder.taskmanager.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,12 +30,6 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    //navigatie
-    @GetMapping
-    public String getIndex(){
-        return "index";
-    }
-
     //navigatie naar taskovervieuw, met lijst van alle tasks
     @GetMapping("tasks")
     public String getTaskOverview(Model model){
@@ -41,7 +38,7 @@ public class TaskController {
     }
 
     //details krijge van 1 specifieke task
-    @GetMapping("tasks/{taskId}")
+    @GetMapping("tasks/details/{taskId}")
     public String getTaskDetail(@PathVariable int taskId, Model model){
         model.addAttribute("task", taskService.getTask(taskId));
         if(taskService.getTask(taskId) != null) {
@@ -85,7 +82,7 @@ public class TaskController {
             return "subtaskform";
         }
         taskService.addSubTask(subTaskDTO, taskId);
-        return "redirect:/tasks/" + taskId;
+        return "redirect:/tasks/details/" + taskId;
     }
 
     //Edit an existing task
@@ -101,7 +98,7 @@ public class TaskController {
             return "edittaskform";
         }
         taskService.editTask(taskDTO);
-        return "redirect:/tasks/" + taskId;
+        return "redirect:/tasks/details/" + taskId;
     }
 
     //Alles over delete task

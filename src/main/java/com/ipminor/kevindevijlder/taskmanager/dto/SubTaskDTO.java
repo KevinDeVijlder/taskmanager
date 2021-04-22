@@ -13,17 +13,17 @@ import java.util.List;
 public class SubTaskDTO {
     private long subtaskId;
 
-    @NotEmpty(message = "Title can't be empty")
+    @NotEmpty(message = "{subtask.title.notempty}")
     @Size.List({
-            @Size(min = 5, message = "Title has to be at least 5 characters long"),
-            @Size(max = 25, message = "Title can't be longer than 25 characters")
+            @Size(min = 5, message = "{subtask.title.size.min}"),
+            @Size(max = 25, message = "{subtask.title.size.max}")
     })
     private String title;
 
-    @NotEmpty(message = "Description can't be empty")
+    @NotEmpty(message = "{subtask.description.notempty}")
     @Size.List({
-            @Size(min = 10, message = "Description has to be at least 10 characters long"),
-            @Size(max = 150, message = "Description can't be longer than 150 characters")
+            @Size(min = 10, message = "{subtask.description.size.min}"),
+            @Size(max = 150, message = "{subtask.description.size.max}")
     })
     private String description;
 
